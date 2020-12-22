@@ -63,7 +63,7 @@ public:
     DEFINE_SETTINGFACT(firstRunPromptIdsShown)
     DEFINE_SETTINGFACT(forwardMavlink)
     DEFINE_SETTINGFACT(forwardMavlinkHostName)
-
+    DEFINE_SETTINGFACT(saveSensorLog)
 
     // Although this is a global setting it only affects ArduPilot vehicle since PX4 automatically starts the stream from the vehicle side
     DEFINE_SETTINGFACT(apmStartMavlinkStreams)
@@ -75,6 +75,7 @@ public:
     Q_PROPERTY(QString videoSavePath        READ videoSavePath      NOTIFY savePathsChanged)
     Q_PROPERTY(QString photoSavePath        READ photoSavePath      NOTIFY savePathsChanged)
     Q_PROPERTY(QString crashSavePath        READ crashSavePath      NOTIFY savePathsChanged)
+    Q_PROPERTY(QString sensorSavePath       READ sensorSavePath     NOTIFY savePathsChanged)
 
     Q_PROPERTY(QString planFileExtension        MEMBER planFileExtension        CONSTANT)
     Q_PROPERTY(QString missionFileExtension     MEMBER missionFileExtension     CONSTANT)
@@ -92,6 +93,7 @@ public:
     QString videoSavePath       ();
     QString photoSavePath       ();
     QString crashSavePath       ();
+    QString sensorSavePath      ();
 
     // Helper methods for working with firstRunPromptIds QVariant settings string list
     static QList<int> firstRunPromptsIdsVariantToList   (const QVariant& firstRunPromptIds);
@@ -118,6 +120,7 @@ public:
     static const char* videoDirectory;
     static const char* photoDirectory;
     static const char* crashDirectory;
+    static const char* sensorDirectory;
 
     // Returns the current language setting bypassing the standard SettingsGroup path. This should only be used
     // by QGCApplication::setLanguage to query the language setting as early in the boot process as possible.

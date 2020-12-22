@@ -88,9 +88,12 @@ Item {
 
     FlyViewCustomLayer {
         id:                 customOverlay
-        anchors.fill:       widgetLayer
+        anchors.top:        parent.top
+        anchors.bottom:     parent.bottom
+        anchors.left:       parent.left
+        anchors.right:      guidedAltSlider.visible ? guidedAltSlider.left : parent.right
         z:                  _fullItemZorder + 2
-        parentToolInsets:   widgetLayer.totalToolInsets
+        parentToolInsets:   _toolInsets
         mapControl:         _mapControl
         visible:            !QGroundControl.videoManager.fullScreen
     }

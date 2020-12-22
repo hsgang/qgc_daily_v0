@@ -38,19 +38,59 @@ Item {
     property var totalToolInsets:   _toolInsets // These are the insets for your custom overlay additions
     property var mapControl
 
+    property var    _activeVehicle:         QGroundControl.multiVehicleManager.activeVehicle
+    property var    _planMasterController:  globals.planMasterControllerFlyView
+    property var    _missionController:     _planMasterController.missionController
+    property var    _geoFenceController:    _planMasterController.geoFenceController
+    property var    _rallyPointController:  _planMasterController.rallyPointController
+    property var    _guidedController:      globals.guidedControllerFlyView
+    property real   _margins:               ScreenTools.defaultFontPixelWidth / 2
+    property real   _toolsMargin:           ScreenTools.defaultFontPixelWidth * 0.75
+    property rect   _centerViewport:        Qt.rect(0, 0, width, height)
+    property real   _rightPanelWidth:       ScreenTools.defaultFontPixelWidth * 30
+
     QGCToolInsets {
-        id:                         _toolInsets
-        leftEdgeCenterInset:    0
-        leftEdgeTopInset:           0
-        leftEdgeBottomInset:        0
-        rightEdgeCenterInset:   0
-        rightEdgeTopInset:          0
-        rightEdgeBottomInset:       0
-        topEdgeCenterInset:       0
-        topEdgeLeftInset:           0
-        topEdgeRightInset:          0
-        bottomEdgeCenterInset:    0
-        bottomEdgeLeftInset:        0
-        bottomEdgeRightInset:       0
+        id:                     _toolInsets
+        leftEdgeTopInset:       toolStrip.leftInset
+        leftEdgeCenterInset:    toolStrip.leftInset
+        leftEdgeBottomInset:    parentToolInsets.leftEdgeBottomInset
+        rightEdgeTopInset:      parentToolInsets.rightEdgeTopInset
+        rightEdgeCenterInset:   parentToolInsets.rightEdgeCenterInset
+        rightEdgeBottomInset:   parentToolInsets.rightEdgeBottomInset
+        topEdgeLeftInset:       instrumentPanel.topEdgeLeftInset
+        topEdgeCenterInset:     instrumentPanel.topEdgeCenterInset
+        topEdgeRightInset:      instrumentPanel.topEdgeRightInset
+        bottomEdgeLeftInset:    parentToolInsets.bottomEdgeLeftInset
+        bottomEdgeCenterInset:  mapScale.centerInset
+        bottomEdgeRightInset:   telemetryPanel.bottomInset
     }
+
+
+
+    FlyViewWindVanePanel {
+        id:                         windvanepanel
+        anchors.margins:            _toolsMargin
+        anchors.bottom:                parent.bottom
+        anchors.right:              parent.right
+        width:                      _rightPanelWidth
+        spacing:                    _toolsMargin
+        visible:                    QGroundControl.corePlugin.options.flyView.showInstrumentPanel && multiVehiclePanelSelector.showSingleVehiclePanel
+        availableHeight:            parent.height - y - _toolsMargin
+
+        property real rightInset: visible ? parent.width - x : 0
+    }
+/*
+    FlyViewWindVanePanel {
+        id:                         instrumentPanel3
+        anchors.margins:            _toolsMargin
+        anchors.bottom:             windvanepanel.top
+        anchors.right:              parent.right
+        width:                      _rightPanelWidth
+        spacing:                    _toolsMargin
+        visible:                    QGroundControl.corePlugin.options.flyView.showInstrumentPanel && multiVehiclePanelSelector.showSingleVehiclePanel
+        availableHeight:            parent.height - y - _toolsMargin
+
+        property real rightInset: visible ? parent.width - x : 0
+    }
+*/
 }

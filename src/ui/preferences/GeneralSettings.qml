@@ -699,6 +699,16 @@ Rectangle {
                                 enabled:    !_disableAllDataPersistence
                                 property Fact _saveCsvTelemetry: QGroundControl.settingsManager.appSettings.saveCsvTelemetry
                             }
+                            FactCheckBox {
+                                id:         sensorSaveLog
+                                text:       qsTr("Save SensorData JSON log")
+                                fact:       _saveSensorLog
+                                //visible:    _saveSensorLog.visible
+                                enabled:    !_disableAllDataPersistence
+                                property Fact _saveSensorLog: QGroundControl.settingsManager.appSettings.saveSensorLog
+                            }
+
+
                         }
                     }
 

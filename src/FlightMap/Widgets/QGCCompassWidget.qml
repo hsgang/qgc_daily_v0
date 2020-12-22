@@ -179,7 +179,7 @@ Item {
                 color:              qgcPal.text
                 anchors.centerIn:   parent
 
-                property string _headingString: vehicle ? _heading.toFixed(0) : "OFF"
+                property string _headingString: vehicle ? _heading.toFixed(0) : "NaN"
                 property string _headingString2: _headingString.length === 1 ? "0" + _headingString : _headingString
                 property string _headingString3: _headingString2.length === 2 ? "0" + _headingString2 : _headingString2
             }

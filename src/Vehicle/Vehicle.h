@@ -40,6 +40,9 @@
 #include "RallyPointManager.h"
 #include "FTPManager.h"
 
+#include "VehicleSensorFactGroup.h"
+#include "VehicleGPS2FactGroup.h"
+
 class UAS;
 class UASInterface;
 class FirmwarePlugin;
@@ -289,6 +292,9 @@ public:
     Q_PROPERTY(FactGroup*           terrain         READ terrainFactGroup           CONSTANT)
     Q_PROPERTY(FactGroup*           distanceSensors READ distanceSensorFactGroup    CONSTANT)
     Q_PROPERTY(QmlObjectListModel*  batteries       READ batteries                  CONSTANT)
+
+    Q_PROPERTY(FactGroup*           sensor          READ sensorFactGroup            CONSTANT)
+    Q_PROPERTY(FactGroup*           gps2            READ gps2FactGroup            CONSTANT)
 
     Q_PROPERTY(int      firmwareMajorVersion        READ firmwareMajorVersion       NOTIFY firmwareVersionChanged)
     Q_PROPERTY(int      firmwareMinorVersion        READ firmwareMinorVersion       NOTIFY firmwareVersionChanged)
@@ -606,6 +612,9 @@ public:
     FactGroup* terrainFactGroup             () { return &_terrainFactGroup; }
     QmlObjectListModel* batteries           () { return &_batteryFactGroupListModel; }
 
+    FactGroup* sensorFactGroup              () { return &_sensorFactGroup; }
+    FactGroup* gps2FactGroup                () { return &_gps2FactGroup; }
+
     MissionManager*                 missionManager      () { return _missionManager; }
     GeoFenceManager*                geoFenceManager     () { return _geoFenceManager; }
     RallyPointManager*              rallyPointManager   () { return _rallyPointManager; }
@@ -914,6 +923,8 @@ private:
     void _handleMessageInterval         (const mavlink_message_t& message);
     void _handleGimbalOrientation       (const mavlink_message_t& message);
     void _handleObstacleDistance        (const mavlink_message_t& message);
+
+    void _handleData16                  (mavlink_message_t& message);
     // ArduPilot dialect messages
 #if !defined(NO_ARDUPILOT_DIALECT)
     void _handleCameraFeedback          (const mavlink_message_t& message);
@@ -936,6 +947,8 @@ private:
     void _pidTuningAdjustRates          (bool setRatesForTuning);
     void _initializeCsv                 ();
     void _writeCsvLine                  ();
+    void _initializeJson                ();
+    void _writeJsonLine                 ();
     void _flightTimerStart              ();
     void _flightTimerStop               ();
     void _chunkedStatusTextTimeout      (void);
@@ -959,6 +972,9 @@ private:
 
     QTimer              _csvLogTimer;
     QFile               _csvLogFile;
+
+    QTimer              _jsonLogTimer;
+    QFile               _jsonLogFile;
 
     bool            _joystickEnabled = false;
 
@@ -1210,6 +1226,9 @@ private:
     TerrainFactGroup                _terrainFactGroup;
     QmlObjectListModel              _batteryFactGroupListModel;
 
+    VehicleSensorFactGroup          _sensorFactGroup;
+    VehicleGPS2FactGroup            _gps2FactGroup;
+
     TerrainProtocolHandler* _terrainProtocolHandler = nullptr;
 
     MissionManager*                 _missionManager             = nullptr;
@@ -1249,6 +1268,9 @@ private:
     static const char* _escStatusFactGroupName;
     static const char* _estimatorStatusFactGroupName;
     static const char* _terrainFactGroupName;
+
+    static const char* _sensorFactGroupName;
+    static const char* _gps2FactGroupName;
 
     static const int _vehicleUIUpdateRateMSecs      = 100;
 

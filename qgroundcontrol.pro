@@ -427,6 +427,8 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 HEADERS += \
     src/QmlControls/QmlUnitsConversion.h \
     src/Vehicle/VehicleEscStatusFactGroup.h \
+    src/Vehicle/VehicleGPS2FactGroup.h \
+    src/Vehicle/VehicleSensorFactGroup.h \
     src/api/QGCCorePlugin.h \
     src/api/QGCOptions.h \
     src/api/QGCSettings.h \
@@ -440,6 +442,8 @@ contains (DEFINES, QGC_ENABLE_PAIRING) {
 
 SOURCES += \
     src/Vehicle/VehicleEscStatusFactGroup.cc \
+    src/Vehicle/VehicleGPS2FactGroup.cc \
+    src/Vehicle/VehicleSensorFactGroup.cc \
     src/api/QGCCorePlugin.cc \
     src/api/QGCOptions.cc \
     src/api/QGCSettings.cc \
@@ -699,6 +703,7 @@ HEADERS += \
     src/Vehicle/VehicleDistanceSensorFactGroup.h \
     src/Vehicle/VehicleEstimatorStatusFactGroup.h \
     src/Vehicle/VehicleGPSFactGroup.h \
+    src/Vehicle/.h \
     src/Vehicle/VehicleLinkManager.h \
     src/Vehicle/VehicleSetpointFactGroup.h \
     src/Vehicle/VehicleTemperatureFactGroup.h \

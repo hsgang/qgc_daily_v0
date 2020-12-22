@@ -70,6 +70,14 @@ Item {
                     QGCLabel { text: _activeVehicle ? _activeVehicle.gps.vdop.valueString : qsTr("--.--", "No data to display") }
                     QGCLabel { text: qsTr("Course Over Ground:") }
                     QGCLabel { text: _activeVehicle ? _activeVehicle.gps.courseOverGround.valueString : qsTr("--.--", "No data to display") }
+                    QGCLabel { text: qsTr("GPS2 Count:") }
+                    QGCLabel { text: _activeVehicle ? _activeVehicle.gps2.countGps2.valueString : qsTr("N/A", "No data to display") }
+                    QGCLabel { text: qsTr("GPS2 Lock:") }
+                    QGCLabel { text: _activeVehicle ? _activeVehicle.gps2.lockGps2.enumStringValue : qsTr("N/A", "No data to display") }
+                    QGCLabel { text: qsTr("HDOP2:") }
+                    QGCLabel { text: _activeVehicle ? _activeVehicle.gps2.hdopGps2.valueString : qsTr("--.--", "No data to display") }
+                    QGCLabel { text: qsTr("VDOP2:") }
+                    QGCLabel { text: _activeVehicle ? _activeVehicle.gps2.vdopGps2.valueString : qsTr("--.--", "No data to display") }
                 }
             }
         }

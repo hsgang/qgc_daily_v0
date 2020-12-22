@@ -1,0 +1,42 @@
+{
+    "version":      1,
+    "fileType":  "FactMetaData",
+    "QGC.MetaData.Facts":
+[
+{
+    "name":             "sensorTemp",
+    "shortDesc": "Sensor Temp",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "C"
+},
+{
+    "name":             "sensorHumi",
+    "shortDesc": "Sensor Humi",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "%"
+},
+{
+    "name":             "sensorBaro",
+    "shortDesc": "Sensor Baro",
+    "type":             "double",
+    "decimalPlaces":    2,
+    "units":            "hPa"
+},
+{
+    "name":             "sensorWindDir",
+    "shortDesc": "Sensor WindDir",
+    "type":             "double",
+    "decimalPlaces":    1,
+    "units":            "deg"
+},
+{
+    "name":             "sensorWindSpd",
+    "shortDesc": "Sensor WindSpd",
+    "type":             "double",
+    "decimalPlaces":    1,
+    "units":            "m/s"
+}
+]
+}

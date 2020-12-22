@@ -18,7 +18,6 @@ import QtQuick.Window           2.2
 import QtQml.Models             2.1
 
 import QGroundControl               1.0
-import QGroundControl.Controls      1.0
 import QGroundControl.Airspace      1.0
 import QGroundControl.Airmap        1.0
 import QGroundControl.Controllers   1.0
@@ -119,9 +118,12 @@ Item {
         property real rightInset: visible ? parent.width - x : 0
     }
 
+
     PhotoVideoControl {
         anchors.margins:        _toolsMargin
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top:            instrumentPanel.bottom
+//        spacing:                _toolsMargin
+     //   anchors.verticalCenter: parent.verticalCenter
         anchors.right:          parent.right
         width:                  _rightPanelWidth
     }

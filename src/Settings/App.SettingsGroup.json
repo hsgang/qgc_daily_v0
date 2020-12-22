@@ -289,6 +289,13 @@
     "default":     false
 },
 {
+    "name":             "saveSensorLog",
+    "shortDesc": "Save Sensor Data Logs",
+    "longDesc":  "If this option is enabled, Sensor data will be written to a file with a 1 Hertz frequency.",
+    "type":             "bool",
+    "default":     false
+},
+{
     "name":             "firstRunPromptIdsShown",
     "shortDesc": "Comma separated list of first run prompt ids which have already been shown.",
     "type":             "string",

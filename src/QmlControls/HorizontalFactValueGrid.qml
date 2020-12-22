@@ -225,12 +225,12 @@ T.HorizontalFactValueGrid {
             }
         }
 
-        /*Rectangle {
+        Rectangle {
             anchors.fill: parent
             border.color: "green"
             border.width: 1
             color: "transparent"
-        }*/
+        }
     }
 
     Component {

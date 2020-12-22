@@ -85,3 +85,9 @@ Qt*-linux*.tar.*
 .vs/
 
 libs/airmapd/include/boost
+Telemetry/2020-11-27 18-02-33.tlog
+*.sh
+*.sh
+tools/iosccachecc.sh
+tools/iosccachecc.sh
+VideoReceiverApp/android/GooglePlayScreenShot1.jpg
